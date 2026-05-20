@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Apresentação MHD 2026 — Ecossistema de Aprendizagem</title>
+  
+  <!-- SEO & Meta Tags -->
+  <meta name="description" content="Apresentação do ecossistema de aprendizagem na intersecção das Humanidades com o Digital para a Mostra de Trabalhos de Mestrado em Humanidades Digitais.">
+  <meta name="author" content="Rômulo Sherman">
+  
+  <!-- Google Fonts para Tipografia Premium -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Folha de Estilo Customizada -->
+  <link rel="stylesheet" href="style.css">
+  
+  <!-- Biblioteca para Ícones FontAwesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+  <!-- Elemento Decorativo de Fundo (Partículas e Gradientes Fluidos) -->
+  <div class="bg-blur-container">
+    <div class="blur-glow glow-1"></div>
+    <div class="blur-glow glow-2"></div>
+    <div class="blur-glow glow-3"></div>
+  </div>
+
+  <!-- CONTAINER PRINCIPAL DA APRESENTAÇÃO -->
+  <main class="presentation-container" id="presentation">
+    
+    <!-- SLIDE 1: CAPA -->
+    <section class="slide active" id="slide-1" data-slide-index="1">
+      <div class="slide-content card-glass">
+        <!-- Cabeçalho com Logos Institucionais Customizados via SVG -->
+        <div class="badge-container animate-fade-in">
+          <!-- LOGO UNIVERSIDADE DO MINHO -->
+          <div class="inst-logo-badge">
+            <svg class="inst-svg uminho-svg" viewBox="0 0 160 45" alt="Universidade do Minho">
+              <!-- Brasão UMinho Estilizado -->
+              <rect x="5" y="5" width="26" height="34" rx="4" fill="#a81c1c" />
+              <path d="M10 12 L10 28 A 8 8 0 0 0 26 28 L 26 12" stroke="#ffffff" stroke-width="3" fill="none" />
+              <line x1="18" y1="12" x2="18" y2="34" stroke="#ffffff" stroke-width="2" />
+              <!-- Letras UMinho -->
+              <text x="39" y="22" font-family="'Outfit', sans-serif" font-size="12" font-weight="700" fill="#ffffff">Universidade</text>
+              <text x="39" y="34" font-family="'Outfit', sans-serif" font-size="12" font-weight="700" fill="#ffffff">do Minho</text>
+            </svg>
+          </div>
+          
+          <!-- LOGO ELACH (Escola de Letras, Artes e Ciências Humanas) -->
+          <div class="inst-logo-badge">
+            <svg class="inst-svg elach-svg" viewBox="0 0 120 45" alt="ELACH UMinho">
+              <!-- Símbolo ELACH Estilizado (Círculo Digital de Humanidades) -->
+              <circle cx="20" cy="22" r="15" fill="none" stroke="var(--color-primary)" stroke-width="2" />
+              <polygon points="17,16 26,22 17,28" fill="var(--color-accent)" />
+              <circle cx="20" cy="22" r="3" fill="#ffffff" />
+              <text x="42" y="26" font-family="'Outfit', sans-serif" font-size="15" font-weight="800" fill="var(--color-primary)" letter-spacing="1">ELACH</text>
+            </svg>
+          </div>
+        </div>
+        
+        <h1 class="main-title text-gradient animate-slide-up">
+          Criação de Ecossistema de Aprendizagem
+        </h1>
+        <h2 class="main-subtitle animate-slide-up delay-1">
+          na intersecção das Humanidades com o Digital
+        </h2>
+        
+        <div class="title-divider animate-scale-up delay-2"></div>
+        
+        <p class="author-info animate-fade-in delay-3">
+          <strong>Rômulo Sherman</strong><br>
+          <span class="text-muted">Mestrado em Humanidades Digitais | Investigação em IA & Pedagogia</span>
+        </p>
+        
+        <div class="click-to-start animate-pulse delay-4" onclick="nextSlide()">
+          <span class="text-action">Iniciar Apresentação</span>
+          <i class="fa-solid fa-arrow-right"></i>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 2: CONCEITO & LINEMAPA -->
+    <section class="slide" id="slide-2" data-slide-index="2">
+      <div class="slide-content wide">
+        <div class="slide-header">
+          <h2 class="slide-title text-gradient"><i class="fa-solid fa-route"></i> O Ecossistema & Linemapa</h2>
+          <p class="slide-description">Clique em cada nó para explorar a convergência teórica, pedagógica e o impacto prático.</p>
+        </div>
+        
+        <div class="timeline-container card-glass">
+          <!-- Linha de Conexão Física -->
+          <div class="timeline-line"></div>
+          
+          <div class="timeline-steps">
+            <!-- NÓ 1: RELIA MESTRADO -->
+            <button class="timeline-node active" data-node="1" onclick="selectNode(1)">
+              <div class="node-circle"><i class="fa-solid fa-book-open-reader"></i></div>
+              <span class="node-label">RELIA</span>
+              <span class="node-year">Mestrado</span>
+            </button>
+            
+            <!-- NÓ 2: TRUECHECK -->
+            <button class="timeline-node" data-node="2" onclick="selectNode(2)">
+              <div class="node-circle"><i class="fa-solid fa-circle-check"></i></div>
+              <span class="node-label">Truecheck</span>
+              <span class="node-year">Nato4school</span>
+            </button>
+            
+            <!-- NÓ 3: Q-COLECTOR -->
+            <button class="timeline-node" data-node="3" onclick="selectNode(3)">
+              <div class="node-circle"><i class="fa-solid fa-layer-group"></i></div>
+              <span class="node-label">Q-Colector</span>
+              <span class="node-year">Medicina II</span>
+            </button>
+            
+            <!-- NÓ 4: IBL PHD4MOZ -->
+            <button class="timeline-node" data-node="4" onclick="selectNode(4)">
+              <div class="node-circle"><i class="fa-solid fa-pen-nib"></i></div>
+              <span class="node-label">IBL</span>
+              <span class="node-year">PHD4MOZ</span>
+            </button>
+            
+            <!-- NÓ 5: RELIA-FCT -->
+            <button class="timeline-node" data-node="5" onclick="selectNode(5)">
+              <div class="node-circle"><i class="fa-solid fa-award"></i></div>
+              <span class="node-label">RELIA-FCT</span>
+              <span class="node-year">Projeto</span>
+            </button>
+            
+            <!-- NÓ 6: TECMINHO -->
+            <button class="timeline-node" data-node="6" onclick="selectNode(6)">
+              <div class="node-circle"><i class="fa-solid fa-share-nodes"></i></div>
+              <span class="node-label">TECMINHO</span>
+              <span class="node-year">PDW</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- DETALHES DO NÓ SELECIONADO -->
+        <div class="node-details-container card-glass">
+          <div class="node-details-grid" id="node-details-content">
+            <!-- Gerado dinamicamente via JS com base no nó ativo -->
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 3: PAINEL DAS APLICAÇÕES (DASHBOARD) -->
+    <section class="slide" id="slide-3" data-slide-index="3">
+      <div class="slide-content wide">
+        <div class="slide-header">
+          <h2 class="slide-title text-gradient"><i class="fa-solid fa-desktop"></i> Dashboard das Aplicações</h2>
+          <p class="slide-description">Explore o ecossistema digital interativamente. Clique para abrir ou simular o ecrã.</p>
+        </div>
+        
+        <!-- Dashboard tipo Sistema Operativo -->
+        <div class="dashboard-desktop card-glass">
+          <div class="desktop-sidebar">
+            <h3 class="sidebar-title"><i class="fa-solid fa-cubes"></i> Projetos</h3>
+            <ul class="desktop-menu">
+              <li class="menu-item active" onclick="activateApp(1)"><i class="fa-solid fa-book-bookmark text-relia"></i> RELIA Mestrado</li>
+              <li class="menu-item" onclick="activateApp(2)"><i class="fa-solid fa-shield-halved text-truecheck"></i> Truecheck</li>
+              <li class="menu-item" onclick="activateApp(3)"><i class="fa-solid fa-clipboard-question text-qcolector"></i> Q-Colector</li>
+              <li class="menu-item" onclick="activateApp(4)"><i class="fa-solid fa-graduation-cap text-ibl"></i> IBL (PHD4MOZ)</li>
+              <li class="menu-item" onclick="activateApp(5)"><i class="fa-solid fa-compass text-reliafct"></i> RELIA-FCT</li>
+              <li class="menu-item" onclick="activateApp(6)"><i class="fa-solid fa-globe text-pdw"></i> TECMINHO</li>
+            </ul>
+            <div class="sidebar-footer">
+              <span class="status-indicator online"></span>
+              <span class="status-text">Ecossistema Online</span>
+            </div>
+          </div>
+          
+          <div class="desktop-stage">
+            <!-- JANELA SIMULADA -->
+            <div class="mock-window">
+              <div class="window-header">
+                <div class="window-dots">
+                  <span class="dot dot-close"></span>
+                  <span class="dot dot-minimize"></span>
+                  <span class="dot dot-maximize"></span>
+                </div>
+                <div class="window-address-bar">
+                  <i class="fa-solid fa-lock text-success"></i>
+                  <span class="address-text" id="window-address">https://reliia.streamlit.app/</span>
+                  <i class="fa-solid fa-rotate-right" onclick="reloadIframe()"></i>
+                </div>
+                <div class="window-actions">
+                  <a id="window-external-link" href="https://reliia.streamlit.app/" target="_blank" class="btn btn-sm btn-glass">
+                    <i class="fa-solid fa-up-right-from-square"></i> Abrir Nova Aba
+                  </a>
+                  <button class="btn btn-sm btn-glass" onclick="toggleDetailsView()">
+                    <i class="fa-solid fa-circle-info"></i> Ficha Técnica
+                  </button>
+                </div>
+              </div>
+              
+              <div class="window-body">
+                <!-- FRAME DE CARREGAMENTO DO IFRAME -->
+                <div class="iframe-container active" id="iframe-wrapper">
+                  <div class="iframe-loader">
+                    <i class="fa-solid fa-circle-notch fa-spin"></i>
+                    <span>A carregar aplicação segura...</span>
+                  </div>
+                  <iframe id="app-iframe" src="" title="Visualização da Aplicação"></iframe>
+                </div>
+                
+                <!-- VIEW DE DETALHES / IMAGENS DE FALLBACK -->
+                <div class="app-details-fallback" id="details-wrapper">
+                  <!-- Gerado dinamicamente via JS -->
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 4: ENCERRAMENTO -->
+    <section class="slide" id="slide-4" data-slide-index="4">
+      <div class="slide-content card-glass text-center">
+        <!-- Logos Académicos no Encerramento -->
+        <div class="badge-container animate-fade-in" style="justify-content: center; margin-bottom: 15px;">
+          <!-- LOGO UNIVERSIDADE DO MINHO -->
+          <div class="inst-logo-badge">
+            <svg class="inst-svg uminho-svg" viewBox="0 0 160 45" alt="Universidade do Minho">
+              <rect x="5" y="5" width="26" height="34" rx="4" fill="#a81c1c" />
+              <path d="M10 12 L10 28 A 8 8 0 0 0 26 28 L 26 12" stroke="#ffffff" stroke-width="3" fill="none" />
+              <line x1="18" y1="12" x2="18" y2="34" stroke="#ffffff" stroke-width="2" />
+              <text x="39" y="22" font-family="'Outfit', sans-serif" font-size="12" font-weight="700" fill="#ffffff">Universidade</text>
+              <text x="39" y="34" font-family="'Outfit', sans-serif" font-size="12" font-weight="700" fill="#ffffff">do Minho</text>
+            </svg>
+          </div>
+          
+          <!-- LOGO ELACH -->
+          <div class="inst-logo-badge">
+            <svg class="inst-svg elach-svg" viewBox="0 0 120 45" alt="ELACH UMinho">
+              <circle cx="20" cy="22" r="15" fill="none" stroke="var(--color-primary)" stroke-width="2" />
+              <polygon points="17,16 26,22 17,28" fill="var(--color-accent)" />
+              <circle cx="20" cy="22" r="3" fill="#ffffff" />
+              <text x="42" y="26" font-family="'Outfit', sans-serif" font-size="15" font-weight="800" fill="var(--color-primary)" letter-spacing="1">ELACH</text>
+            </svg>
+          </div>
+        </div>
+
+        <h2 class="slide-title text-gradient animate-slide-up" style="justify-content: center;"><i class="fa-solid fa-circle-check"></i> Rumo ao Futuro</h2>
+        <h3 class="closing-subtitle animate-slide-up delay-1">Investigação e Tecnologia com Sentido Humano</h3>
+        
+        <div class="closing-grid">
+          <!-- Coluna Informações -->
+          <div class="closing-info animate-fade-in delay-2">
+            <div class="academic-card">
+              <h4>Rômulo Sherman</h4>
+              <p class="role">Registo de Doutoramento em Humanidades Digitais</p>
+              <p class="dept">Instituto de Letras e Ciências Humanas</p>
+              <p class="univ">Universidade do Minho (2026)</p>
+              
+              <div class="academic-topics">
+                <div class="topic-tag"><i class="fa-solid fa-brain"></i> IA Generativa Híbrida</div>
+                <div class="topic-tag"><i class="fa-solid fa-code"></i> NLP & Engenharia de Prompts</div>
+                <div class="topic-tag"><i class="fa-solid fa-book-open"></i> Leitura Crítica & Taxonomia Webb</div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Coluna QR Code & Repositório -->
+          <div class="closing-qrcode animate-scale-up delay-3">
+            <div class="qrcode-card">
+              <div class="qrcode-wrapper">
+                <img id="github-qr" src="https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=https://github.com/rshermans/Slides-MHD-2026.git&color=ffffff&bgcolor=151821" alt="QR Code GitHub">
+              </div>
+              <span class="qrcode-label">Aceda ao Repositório do Código</span>
+              <a href="https://github.com/rshermans/Slides-MHD-2026.git" target="_blank" class="github-link">
+                <i class="fa-brands fa-github"></i> rshermans/Slides-MHD-2026
+              </a>
+            </div>
+          </div>
+        </div>
+        
+        <footer class="closing-footer animate-fade-in delay-4">
+          <p class="thank-you text-gradient">Muito Obrigado.</p>
+        </footer>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- CONTROLOS GERAIS DE NAVEGAÇÃO (AÇÃO VISUAL DA PASSAGEM) -->
+  <div class="navigation-controls">
+    <button class="nav-btn" id="prev-btn" onclick="prevSlide()" aria-label="Slide anterior">
+      <i class="fa-solid fa-chevron-left"></i>
+    </button>
+    <div class="slide-indicator">
+      <span class="dot dot-indicator active" onclick="goToSlide(1)"></span>
+      <span class="dot dot-indicator" onclick="goToSlide(2)"></span>
+      <span class="dot dot-indicator" onclick="goToSlide(3)"></span>
+      <span class="dot dot-indicator" onclick="goToSlide(4)"></span>
+    </div>
+    <button class="nav-btn" id="next-btn" onclick="nextSlide()" aria-label="Próximo slide">
+      <i class="fa-solid fa-chevron-right"></i>
+    </button>
+    
+    <!-- Botão de Atalho para o Modo de Apresentador -->
+    <button class="nav-btn btn-presenter" onclick="togglePresenterMode()" title="Ativar Modo de Apresentador (Tecla P)">
+      <i class="fa-solid fa-microphone"></i>
+    </button>
+  </div>
+
+  <!-- PAINEL DO APRESENTADOR (PRESENTER MODE) -->
+  <aside class="presenter-sidebar" id="presenter-panel">
+    <div class="presenter-header">
+      <h3><i class="fa-solid fa-chalkboard-user"></i> Presenter Mode</h3>
+      <button class="btn-close-presenter" onclick="togglePresenterMode()"><i class="fa-solid fa-times"></i></button>
+    </div>
+    
+    <div class="presenter-body">
+      <!-- Cronómetro da Apresentação -->
+      <div class="timer-box">
+        <div class="timer-value" id="presentation-timer">00:00</div>
+        <div class="timer-controls">
+          <button class="btn btn-sm btn-timer" onclick="startTimer()"><i class="fa-solid fa-play"></i></button>
+          <button class="btn btn-sm btn-timer" onclick="pauseTimer()"><i class="fa-solid fa-pause"></i></button>
+          <button class="btn btn-sm btn-timer" onclick="resetTimer()"><i class="fa-solid fa-rotate-left"></i></button>
+        </div>
+      </div>
+      
+      <!-- Notas de Fala Dinâmicas -->
+      <div class="speech-notes-container">
+        <h4 class="notes-title"><i class="fa-solid fa-quote-left"></i> Guião de Fala</h4>
+        <div class="notes-content" id="presenter-notes">
+          <!-- Carregado via JS dinamicamente para o slide ativo -->
+        </div>
+      </div>
+      
+      <!-- Estratégia Narrativa & Cronometragem -->
+      <div class="narrative-tips">
+        <h4><i class="fa-solid fa-lightbulb"></i> Conselhos de Ritmo</h4>
+        <ul class="tips-list" id="presenter-tips">
+          <!-- Carregado via JS -->
+        </ul>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Script Principal da Apresentação -->
+  <script src="script.js"></script>
+</body>
+</html>
