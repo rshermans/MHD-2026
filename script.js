@@ -81,6 +81,23 @@ const projectsData = {
     tech: "Desenvolvimento do website otimizado, funil de conversão nas redes, criação automatizada de conteúdos educativos dinâmicos.",
     impact: "Engajamento ampliado com audiências estratégicas, criação do website institucional e posicionamento de marca profissional.",
     imageFallback: "stitch_ecossistemas_de_media_o_inteligente/image.png_4/screen.png"
+  },
+  7: {
+    id: 7,
+    title: "Aplicação RELIA",
+    tag: "Plataforma CEHUM — Produção",
+    badgeClass: "badge-primary",
+    url: "https://relia.cehum.elach.uminho.pt/login",
+    color: "var(--color-reliaapp)",
+    desc: "A plataforma RELIA em ambiente de produção, hospedada no Centro de Estudos Humanísticos da Universidade do Minho (CEHUM). Representa a materialização institucional do ecossistema de leitura inteligente.",
+    pedagogy: "Leitura literária assistida por IA com percursos de aprendizagem personalizados, gamificação com Taxonomia de Webb e acompanhamento empático do leitor.",
+    tech: "Plataforma web fullstack em produção, autenticação de utilizadores, integração com infraestrutura CEHUM/ELACH da Universidade do Minho.",
+    impact: "Validação institucional do projeto RELIA como ferramenta de uso real em contexto académico e investigativo na Universidade do Minho.",
+    imageFallback: "stitch_ecossistemas_de_media_o_inteligente/image.png_3/screen.png",
+    credentials: {
+      email: "001@email.com",
+      password: "001@email.coM"
+    }
   }
 };
 
@@ -111,7 +128,9 @@ const speechNotes = {
     
     5. Com o RELIA-FCT, enfrentámos o desafio de escalar durante 1 ano com orçamento reduzido. A solução? Automação inteligente do backoffice: prompts estruturados para criar excertos lógicos de texto, podcasts educativos e vídeos automáticos. Mais importante: elevámos a dinâmica pedagógica ao introduzir a Taxonomia de Webb (DOK) e de Bloom nas questões e gamificação, testadas com sucesso em duas escolas de Braga.
     
-    6. E finalmente, na TECMINHO, atacamos o marketing educacional digital (LinkedIn, Instagram, WhatsApp) em torno do PDW, criando o website que hoje partilho convosco.”`,
+    6. Na TECMINHO, atacamos o marketing educacional digital (LinkedIn, Instagram, WhatsApp) em torno do PDW, criando o website que hoje partilho convosco.
+    
+    7. E finalmente, como coroação institucional de todo este percurso, a Aplicação RELIA em produção no CEHUM — a materialização oficial do ecossistema de leitura inteligente na Universidade do Minho, que podem experimentar hoje.”`,
     tips: [
       "Não acelere a fala. Faça uma breve pausa ao passar por cada projeto no timeline.",
       "Enfatize Braga e a Medicina II como validações de alto impacto real.",
@@ -157,7 +176,7 @@ let currentSlide = 1;
 const totalSlides = 4;
 let activeNode = 1;
 let activeApp = 1;
-let isDetailsView = false;
+let isDetailsView = true;
 
 // VARIÁVEIS DO CRONÓMETRO
 let timerInterval = null;
@@ -170,13 +189,13 @@ let isTimerRunning = false;
 document.addEventListener("DOMContentLoaded", () => {
   // Inicializar o slide inicial
   goToSlide(1);
-  
+
   // Renderizar o primeiro nó da linha de tempo
   selectNode(1);
-  
+
   // Configurar listeners de teclado
   document.addEventListener("keydown", handleKeyDown);
-  
+
   // Registrar cliques nos indicadores
   updateControls();
 });
@@ -186,26 +205,26 @@ document.addEventListener("DOMContentLoaded", () => {
 // -------------------------------------------------------------
 function goToSlide(slideIndex) {
   if (slideIndex < 1 || slideIndex > totalSlides) return;
-  
+
   // Limpar classes ativas e anteriores de todos os slides
   for (let i = 1; i <= totalSlides; i++) {
     const slide = document.getElementById(`slide-${i}`);
     slide.classList.remove("active", "prev");
-    
+
     if (i < slideIndex) {
       slide.classList.add("prev");
     }
   }
-  
+
   // Ativar o slide selecionado
   const activeSlideEl = document.getElementById(`slide-${slideIndex}`);
   activeSlideEl.classList.add("active");
-  
+
   currentSlide = slideIndex;
-  
+
   // Atualizar botões e bolinhas do indicador
   updateControls();
-  
+
   // Sincronizar o Presenter Mode
   syncPresenterMode();
 
@@ -232,7 +251,7 @@ function updateControls() {
   // Atualizar botões de setas
   const prevBtn = document.getElementById("prev-btn");
   const nextBtn = document.getElementById("next-btn");
-  
+
   if (currentSlide === 1) {
     prevBtn.style.opacity = "0.3";
     prevBtn.style.pointerEvents = "none";
@@ -240,7 +259,7 @@ function updateControls() {
     prevBtn.style.opacity = "1";
     prevBtn.style.pointerEvents = "all";
   }
-  
+
   if (currentSlide === totalSlides) {
     nextBtn.style.opacity = "0.3";
     nextBtn.style.pointerEvents = "none";
@@ -248,7 +267,7 @@ function updateControls() {
     nextBtn.style.opacity = "1";
     nextBtn.style.pointerEvents = "all";
   }
-  
+
   // Atualizar os círculos indicadores
   const dots = document.querySelectorAll(".slide-indicator .dot-indicator");
   dots.forEach((dot, idx) => {
@@ -279,6 +298,9 @@ function handleKeyDown(e) {
   } else if (e.key.toLowerCase() === "p") {
     e.preventDefault();
     togglePresenterMode();
+  } else if (e.key.toLowerCase() === "t") {
+    e.preventDefault();
+    toggleTheme();
   }
 }
 
@@ -291,20 +313,20 @@ function selectNode(nodeIndex) {
   nodes.forEach(node => {
     node.classList.remove("active");
   });
-  
+
   // Adicionar classe ativa no selecionado
   const selectedNodeEl = document.querySelector(`.timeline-node[data-node="${nodeIndex}"]`);
   if (selectedNodeEl) selectedNodeEl.classList.add("active");
-  
+
   activeNode = nodeIndex;
-  
+
   // Obter os dados do projeto
   const pData = projectsData[nodeIndex];
   if (!pData) return;
-  
+
   // Atualizar a caixa de conteúdo
   const contentContainer = document.getElementById("node-details-content");
-  
+
   contentContainer.innerHTML = `
     <!-- Coluna 1: Cabeçalho do Projeto -->
     <div class="details-column details-title-box">
@@ -336,8 +358,8 @@ function selectNode(nodeIndex) {
 // -------------------------------------------------------------
 function activateApp(appIndex) {
   activeApp = appIndex;
-  isDetailsView = false; // Resetar para vista de iframe por padrão
-  
+  isDetailsView = true; // Resetar para vista de detalhes (ficha técnica) por padrão
+
   // Atualizar estados do menu lateral
   const menuItems = document.querySelectorAll(".desktop-menu .menu-item");
   menuItems.forEach((item, idx) => {
@@ -347,66 +369,87 @@ function activateApp(appIndex) {
       item.classList.remove("active");
     }
   });
-  
+
   const app = projectsData[appIndex];
   if (!app) return;
-  
+
   // Atualizar barra de endereço
   document.getElementById("window-address").innerText = app.url;
-  
+
   // Atualizar link externo
   document.getElementById("window-external-link").setAttribute("href", app.url);
-  
+
   // Atualizar visualizações
   const iframeWrapper = document.getElementById("iframe-wrapper");
   const detailsWrapper = document.getElementById("details-wrapper");
-  
-  iframeWrapper.classList.add("active");
-  detailsWrapper.classList.remove("active");
-  
+
+  iframeWrapper.classList.remove("active");
+  detailsWrapper.classList.add("active");
+
   // Mostrar loader no iframe
   const loader = iframeWrapper.querySelector(".iframe-loader");
   loader.style.opacity = "1";
   loader.style.pointerEvents = "all";
-  
+
   // Carregar Iframe de forma assíncrona para não travar transição do slide
   const iframe = document.getElementById("app-iframe");
-  
+
   // Cancelar carregamento anterior se houver
   iframe.src = "about:blank";
-  
-  // Definir novo URL após um micro-delay
-  setTimeout(() => {
-    iframe.src = app.url;
-    
-    // Configurar remoção do loader
-    iframe.onload = () => {
-      loader.style.opacity = "0";
-      loader.style.pointerEvents = "none";
-    };
-  }, 100);
-  
+
+  // Cancelar timeout anterior de iframe
+  if (window._iframeLoadTimeout) {
+    clearTimeout(window._iframeLoadTimeout);
+    window._iframeLoadTimeout = null;
+  }
+
   // Renderizar Ficha Técnica (Fallback view) antecipadamente
   renderFichaTecnica(app);
+
+  // Definir novo URL após um micro-delay
+  setTimeout(() => {
+    let hasLoaded = false;
+    iframe.src = app.url;
+
+    // Configurar remoção do loader ao carregar com sucesso
+    iframe.onload = () => {
+      hasLoaded = true;
+      loader.style.opacity = "0";
+      loader.style.pointerEvents = "none";
+      if (window._iframeLoadTimeout) {
+        clearTimeout(window._iframeLoadTimeout);
+      }
+    };
+
+    // Fallback por erro de rede
+    iframe.onerror = () => {
+      if (!hasLoaded) showIframeFallback();
+    };
+
+    // Fallback por timeout — se não carrega em 10s, mostra imagem fixa
+    window._iframeLoadTimeout = setTimeout(() => {
+      if (!hasLoaded) showIframeFallback();
+    }, 10000);
+  }, 100);
 }
 
 function reloadIframe() {
   const iframe = document.getElementById("app-iframe");
   const iframeWrapper = document.getElementById("iframe-wrapper");
   const loader = iframeWrapper.querySelector(".iframe-loader");
-  
+
   loader.style.opacity = "1";
   loader.style.pointerEvents = "all";
-  
+
   iframe.src = iframe.src;
 }
 
 function toggleDetailsView() {
   const iframeWrapper = document.getElementById("iframe-wrapper");
   const detailsWrapper = document.getElementById("details-wrapper");
-  
+
   isDetailsView = !isDetailsView;
-  
+
   if (isDetailsView) {
     iframeWrapper.classList.remove("active");
     detailsWrapper.classList.add("active");
@@ -418,7 +461,7 @@ function toggleDetailsView() {
 
 function renderFichaTecnica(app) {
   const detailsWrapper = document.getElementById("details-wrapper");
-  
+
   detailsWrapper.innerHTML = `
     <div class="fallback-grid">
       <!-- Coluna Visual -->
@@ -457,6 +500,20 @@ function renderFichaTecnica(app) {
             <td>Link Direto</td>
             <td><a href="${app.url}" target="_blank" style="color: var(--color-primary); text-decoration: underline;">${app.url}</a></td>
           </tr>
+          ${app.credentials ? `
+          <tr>
+            <td>Acesso Demo</td>
+            <td>
+              <button class="btn-reveal-credentials" onclick="revealCredentials(this)">
+                <i class="fa-solid fa-eye"></i> Mostrar Credenciais
+              </button>
+              <div class="credentials-content" style="display:none;">
+                <span><strong>Email:</strong> ${app.credentials.email}</span><br>
+                <span><strong>Pass:</strong> ${app.credentials.password}</span>
+              </div>
+            </td>
+          </tr>
+          ` : ''}
         </table>
       </div>
     </div>
@@ -467,7 +524,7 @@ function handleImgError(img) {
   // Substitui imagem em falta por um elemento visual gerado em CSS
   img.style.display = "none";
   const parent = img.parentElement;
-  
+
   const placeholder = document.createElement("div");
   placeholder.className = "visual-placeholder animate-pulse";
   placeholder.innerHTML = `
@@ -484,7 +541,7 @@ function handleImgError(img) {
 function togglePresenterMode() {
   const panel = document.getElementById("presenter-panel");
   panel.classList.toggle("active");
-  
+
   // Sincronizar dados assim que abrir
   if (panel.classList.contains("active")) {
     syncPresenterMode();
@@ -498,13 +555,13 @@ function togglePresenterMode() {
 function syncPresenterMode() {
   const notesEl = document.getElementById("presenter-notes");
   const tipsEl = document.getElementById("presenter-tips");
-  
+
   const activeNotes = speechNotes[currentSlide];
   if (!activeNotes) return;
-  
+
   // Injetar Fala
   notesEl.innerHTML = activeNotes.notes;
-  
+
   // Injetar Dicas
   tipsEl.innerHTML = "";
   activeNotes.tips.forEach(tip => {
@@ -517,7 +574,7 @@ function syncPresenterMode() {
 /* Funções do Cronómetro */
 function startTimer() {
   if (isTimerRunning) return;
-  
+
   isTimerRunning = true;
   timerInterval = setInterval(() => {
     timerSeconds++;
@@ -539,17 +596,67 @@ function resetTimer() {
 function updateTimerDisplay() {
   const minutes = Math.floor(timerSeconds / 60);
   const seconds = timerSeconds % 60;
-  
+
   const displayMin = minutes < 10 ? `0${minutes}` : minutes;
   const displaySec = seconds < 10 ? `0${seconds}` : seconds;
-  
+
   const timerValEl = document.getElementById("presentation-timer");
   timerValEl.innerText = `${displayMin}:${displaySec}`;
-  
+
   // Alerta Visual se passar do tempo recomendado de 7 minutos (420 segundos)
   if (timerSeconds > 420) {
     timerValEl.style.color = "#ef4444";
   } else {
     timerValEl.style.color = "var(--color-accent)";
   }
+}
+
+// -------------------------------------------------------------
+// 🎨 ALTERNÂNCIA DE TEMA (LIGHT / DARK MODE)
+// -------------------------------------------------------------
+function toggleTheme() {
+  document.body.classList.toggle("light-mode");
+
+  // Persistir preferência
+  const isLight = document.body.classList.contains("light-mode");
+  localStorage.setItem("mhd-theme", isLight ? "light" : "dark");
+
+  // Atualizar ícone do botão
+  const themeIcon = document.querySelector(".btn-theme i");
+  if (themeIcon) {
+    themeIcon.className = isLight
+      ? "fa-solid fa-moon"
+      : "fa-solid fa-circle-half-stroke";
+  }
+}
+
+// Carregar preferência de tema ao iniciar
+(function loadThemePreference() {
+  const saved = localStorage.getItem("mhd-theme");
+  if (saved === "light") {
+    document.body.classList.add("light-mode");
+    const themeIcon = document.querySelector(".btn-theme i");
+    if (themeIcon) themeIcon.className = "fa-solid fa-moon";
+  }
+})();
+
+// -------------------------------------------------------------
+// 🔐 REVELAR CREDENCIAIS (BOTÃO OCULTO)
+// -------------------------------------------------------------
+function revealCredentials(btn) {
+  const credDiv = btn.nextElementSibling;
+  btn.style.display = "none";
+  credDiv.style.display = "block";
+}
+
+// -------------------------------------------------------------
+// 🖼️ FALLBACK DE IFRAME — MOSTRAR IMAGEM FIXA
+// -------------------------------------------------------------
+function showIframeFallback() {
+  const iframeWrapper = document.getElementById("iframe-wrapper");
+  const detailsWrapper = document.getElementById("details-wrapper");
+
+  iframeWrapper.classList.remove("active");
+  detailsWrapper.classList.add("active");
+  isDetailsView = true;
 }

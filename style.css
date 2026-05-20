@@ -24,6 +24,7 @@
   --color-ibl: 260 85% 60%;
   --color-reliafct: 43 90% 50%;
   --color-pdw: 340 85% 55%;
+  --color-reliaapp: 152 68% 38%;
 
   /* Escala de Cinzentos & Neutros */
   --text-white: 0 0% 98%;
@@ -133,7 +134,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 40px;
+  padding: 24px;
   opacity: 0;
   visibility: hidden;
   transform: translateX(100%) scale(0.95);
@@ -160,9 +161,9 @@ body {
 /* Estilo Base do Contentor do Slide (Glassmorphism) */
 .slide-content {
   width: 100%;
-  max-width: 960px;
+  max-width: 1280px;
   height: 100%;
-  max-height: 580px;
+  max-height: 88vh;
   padding: 50px;
   display: flex;
   flex-direction: column;
@@ -171,8 +172,8 @@ body {
 }
 
 .slide-content.wide {
-  max-width: 1200px;
-  max-height: 680px;
+  max-width: 1440px;
+  max-height: 90vh;
   padding: 30px 40px;
   justify-content: flex-start;
 }
@@ -356,11 +357,12 @@ body {
   height: 3px;
   background: linear-gradient(90deg, 
     hsl(var(--color-relia)) 0%, 
-    hsl(var(--color-truecheck)) 20%, 
-    hsl(var(--color-qcolector)) 40%, 
-    hsl(var(--color-ibl)) 60%, 
-    hsl(var(--color-reliafct)) 80%,
-    hsl(var(--color-pdw)) 100%
+    hsl(var(--color-truecheck)) 16.7%, 
+    hsl(var(--color-qcolector)) 33.3%, 
+    hsl(var(--color-ibl)) 50%, 
+    hsl(var(--color-reliafct)) 66.7%,
+    hsl(var(--color-pdw)) 83.3%,
+    hsl(var(--color-reliaapp)) 100%
   );
   opacity: 0.4;
   z-index: 1;
@@ -438,6 +440,7 @@ body {
 .timeline-node[data-node="4"].active .node-circle { background-color: hsl(var(--color-ibl)); border-color: hsl(var(--color-ibl)); color: white; }
 .timeline-node[data-node="5"].active .node-circle { background-color: hsl(var(--color-reliafct)); border-color: hsl(var(--color-reliafct)); color: white; }
 .timeline-node[data-node="6"].active .node-circle { background-color: hsl(var(--color-pdw)); border-color: hsl(var(--color-pdw)); color: white; }
+.timeline-node[data-node="7"].active .node-circle { background-color: hsl(var(--color-reliaapp)); border-color: hsl(var(--color-reliaapp)); color: white; }
 
 .timeline-node.active .node-label {
   color: hsl(var(--text-white));
@@ -539,7 +542,8 @@ body {
 .dashboard-desktop {
   display: grid;
   grid-template-columns: 240px 1fr;
-  height: 480px;
+  flex-grow: 1;
+  min-height: 400px;
   width: 100%;
   overflow: hidden;
   border-radius: 16px;
@@ -1283,6 +1287,7 @@ body {
 .text-ibl { color: hsl(var(--color-ibl)) !important; }
 .text-reliafct { color: hsl(var(--color-reliafct)) !important; }
 .text-pdw { color: hsl(var(--color-pdw)) !important; }
+.text-reliaapp { color: hsl(var(--color-reliaapp)) !important; }
 
 /* Classes de Animação de Entrada */
 .animate-fade-in { opacity: 0; animation: fadeIn 0.8s forwards ease; }
@@ -1337,7 +1342,8 @@ body {
   .dashboard-desktop {
     grid-template-columns: 1fr;
     grid-template-rows: auto 1fr;
-    height: 400px;
+    flex-grow: 1;
+    min-height: 280px;
   }
   .desktop-sidebar {
     border-right: none;
@@ -1355,4 +1361,269 @@ body {
   .timeline-container {
     overflow-x: auto;
   }
+}
+
+/* --- LOGO INSTITUCIONAL (IMAGEM) --- */
+.inst-logo-img {
+  height: 55px;
+  width: auto;
+  display: block;
+  border-radius: 8px;
+  transition: var(--transition-fast);
+}
+
+.inst-logo-badge:hover .inst-logo-img {
+  transform: scale(1.03);
+  filter: brightness(1.05);
+}
+
+/* --- BOTÃO DE REVELAÇÃO DE CREDENCIAIS --- */
+.btn-reveal-credentials {
+  background: rgba(255, 255, 255, 0.06);
+  color: hsl(var(--color-accent));
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 6px;
+  padding: 6px 14px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: var(--transition-fast);
+}
+
+.btn-reveal-credentials:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: hsl(var(--color-accent));
+}
+
+.credentials-content {
+  font-size: 0.82rem;
+  line-height: 1.7;
+  color: hsl(var(--color-accent));
+  font-family: monospace;
+}
+
+/* --- BOTÃO DE TEMA (LIGHT/DARK) --- */
+.btn-theme {
+  color: hsl(var(--color-primary));
+}
+
+.btn-theme:hover {
+  background: rgba(180, 100, 50, 0.12);
+}
+
+/* --- TRANSIÇÃO SUAVE DE TEMA --- */
+body,
+.card-glass,
+.navigation-controls,
+.desktop-sidebar,
+.window-header,
+.window-body,
+.mock-window,
+.desktop-stage,
+.presenter-sidebar,
+.node-circle,
+.inst-logo-badge,
+.academic-card,
+.qrcode-card,
+.topic-tag {
+  transition: background-color 0.4s ease, border-color 0.4s ease, color 0.3s ease, box-shadow 0.4s ease;
+}
+
+/* =============================================================
+   🌞 LIGHT MODE — TEMA CLARO PREMIUM
+   ============================================================= */
+body.light-mode {
+  --bg-primary: 42 30% 97%;
+  --bg-secondary: 40 20% 94%;
+  --bg-card: 0 0% 100%;
+  --text-white: 220 25% 12%;
+  --text-grey: 220 12% 42%;
+  --text-muted: 220 8% 58%;
+  --border-glass: 0 0 0 / 0.07;
+  --shadow-premium: 0 12px 40px rgba(0, 0, 0, 0.06);
+}
+
+body.light-mode .blur-glow {
+  opacity: 0.05;
+}
+
+body.light-mode .card-glass {
+  background: rgba(255, 255, 255, 0.82);
+  border-color: rgba(0, 0, 0, 0.07);
+}
+
+body.light-mode .text-gradient {
+  background: linear-gradient(135deg, hsl(180 100% 30%), hsl(270 95% 45%));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+body.light-mode .navigation-controls {
+  background: rgba(255, 255, 255, 0.9);
+  border-color: rgba(0, 0, 0, 0.08);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+}
+
+body.light-mode .slide-indicator .dot {
+  background: rgba(0, 0, 0, 0.15);
+}
+
+body.light-mode .slide-indicator .dot:hover {
+  background: rgba(0, 0, 0, 0.3);
+}
+
+body.light-mode .desktop-sidebar {
+  background: rgba(248, 246, 242, 0.88);
+  border-right-color: rgba(0, 0, 0, 0.06);
+}
+
+body.light-mode .menu-item:hover {
+  background: rgba(0, 0, 0, 0.04);
+}
+
+body.light-mode .menu-item.active {
+  background: rgba(0, 0, 0, 0.06);
+  border-left-color: hsl(var(--color-primary));
+}
+
+body.light-mode .sidebar-footer {
+  border-top-color: rgba(0, 0, 0, 0.06);
+}
+
+body.light-mode .desktop-stage {
+  background: rgba(248, 246, 242, 0.3);
+}
+
+body.light-mode .mock-window {
+  background: hsl(var(--bg-secondary));
+  border-color: rgba(0, 0, 0, 0.08);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+
+body.light-mode .window-header {
+  background: rgba(248, 246, 242, 0.94);
+  border-bottom-color: rgba(0, 0, 0, 0.06);
+}
+
+body.light-mode .window-address-bar {
+  background: rgba(0, 0, 0, 0.03);
+  border-color: rgba(0, 0, 0, 0.06);
+}
+
+body.light-mode .window-body,
+body.light-mode .iframe-loader,
+body.light-mode .app-details-fallback {
+  background: hsl(var(--bg-secondary));
+}
+
+body.light-mode .node-circle {
+  background: hsl(var(--bg-card));
+  border-color: rgba(0, 0, 0, 0.12);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.06);
+}
+
+body.light-mode .timeline-node:hover .node-circle {
+  border-color: rgba(0, 0, 0, 0.3);
+}
+
+body.light-mode .inst-logo-badge {
+  background: rgba(255, 255, 255, 0.95);
+  border-color: rgba(0, 0, 0, 0.06);
+}
+
+body.light-mode .click-to-start {
+  background: rgba(0, 0, 0, 0.03);
+  border-color: rgba(0, 0, 0, 0.06);
+}
+
+body.light-mode .click-to-start:hover {
+  background: linear-gradient(135deg, rgba(0, 150, 136, 0.08), rgba(103, 58, 183, 0.08));
+  border-color: rgba(0, 150, 136, 0.2);
+}
+
+body.light-mode .academic-card {
+  background: rgba(0, 0, 0, 0.015);
+  border-color: rgba(0, 0, 0, 0.06);
+}
+
+body.light-mode .topic-tag {
+  background: rgba(0, 0, 0, 0.03);
+}
+
+body.light-mode .qrcode-card {
+  background: rgba(255, 255, 255, 0.92);
+  border-color: rgba(0, 0, 0, 0.08);
+}
+
+body.light-mode .details-tag {
+  background: rgba(0, 0, 0, 0.04);
+  border-color: rgba(0, 0, 0, 0.06);
+}
+
+body.light-mode .badge-primary {
+  background: rgba(0, 150, 136, 0.08);
+  border-color: rgba(0, 150, 136, 0.18);
+}
+
+body.light-mode .badge-secondary {
+  background: rgba(103, 58, 183, 0.08);
+  border-color: rgba(103, 58, 183, 0.18);
+}
+
+body.light-mode .btn-glass {
+  background: rgba(0, 0, 0, 0.04);
+  border-color: rgba(0, 0, 0, 0.06);
+}
+
+body.light-mode .btn-glass:hover {
+  background: rgba(0, 0, 0, 0.08);
+}
+
+body.light-mode .presenter-sidebar {
+  background: rgba(252, 250, 247, 0.98);
+  border-left-color: rgba(0, 0, 0, 0.08);
+  box-shadow: -10px 0 30px rgba(0, 0, 0, 0.06);
+}
+
+body.light-mode .presenter-header {
+  border-bottom-color: rgba(0, 0, 0, 0.08);
+}
+
+body.light-mode .timer-box,
+body.light-mode .speech-notes-container {
+  background: rgba(0, 0, 0, 0.02);
+  border-color: rgba(0, 0, 0, 0.05);
+}
+
+body.light-mode .narrative-tips {
+  background: rgba(255, 165, 0, 0.04);
+  border-color: rgba(255, 165, 0, 0.12);
+}
+
+body.light-mode .tech-spec-table tr {
+  border-bottom-color: rgba(0, 0, 0, 0.06);
+}
+
+body.light-mode .fallback-visual {
+  border-color: rgba(0, 0, 0, 0.06);
+  background: rgba(0, 0, 0, 0.02);
+}
+
+body.light-mode .timeline-container,
+body.light-mode .node-details-container {
+  background: rgba(255, 255, 255, 0.82);
+  border-color: rgba(0, 0, 0, 0.07);
+}
+
+body.light-mode .btn-reveal-credentials {
+  background: rgba(0, 0, 0, 0.04);
+  border-color: rgba(0, 0, 0, 0.08);
+}
+
+body.light-mode .btn-reveal-credentials:hover {
+  background: rgba(0, 0, 0, 0.08);
 }
