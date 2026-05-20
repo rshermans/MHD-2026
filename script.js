@@ -540,6 +540,16 @@ function handleImgError(img) {
 // -------------------------------------------------------------
 function togglePresenterMode() {
   const panel = document.getElementById("presenter-panel");
+  
+  // Easter Egg: Pedir PIN se estiver a tentar abrir o painel
+  if (!panel.classList.contains("active")) {
+    const pin = prompt("System Auth:");
+    // PIN simples: 2026
+    if (pin !== "2026") {
+      return; // PIN incorreto, cancela a abertura silenciosamente
+    }
+  }
+
   panel.classList.toggle("active");
 
   // Sincronizar dados assim que abrir
