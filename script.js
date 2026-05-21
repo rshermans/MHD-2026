@@ -116,7 +116,7 @@ const speechNotes = {
     ]
   },
   2: {
-    notes: `“Olhemos agora para o nosso Linemapa — a evolução conceptual e prática deste ecossistema.
+    notes: `“Olhemos agora para o nosso Linemap — a evolução conceptual e prática deste ecossistema.
 
     1. O RELIA original (Mestrado) provou que era possível dialogar com a literatura através de IA.
     
@@ -158,13 +158,13 @@ const speechNotes = {
     
     Proponho-me a continuar a investigar como o processamento de linguagem natural (NLP), a IA híbrida e a leitura crítica na era da desinformação se podem fundir para criar salas de aula e sociedades mais inclusivas, críticas e autónomas.
     
-    Para explorar o código de todas as aplicações que viram hoje e acompanhar este desenvolvimento de investigação, convido-vos a ler o QR Code no ecrã que aponta diretamente para o repositório público do meu GitHub.
+    Para explorar esta apresentação e acompanhar de perto todo o ecossistema digital desenvolvido ao longo desta investigação, convido-vos a ler o QR Code no ecrã que aponta diretamente para a versão online da nossa apresentação.
     
     Agradeço à Universidade do Minho e à Escola ELACH pela confiança e apoio contínuo.
     
     A tecnologia não deve substituir o leitor ou o estudante. Deve acompanhá-lo. Muito obrigado pelo vosso tempo. O meu nome é Rômulo Sherman.”`,
     tips: [
-      "Aponte para o QR Code e o link do GitHub.",
+      "Aponte para o QR Code e o link da apresentação.",
       "Termine com firmeza na frase final: 'tecnologia acompanha o estudante, não o substitui'.",
       "Agradeça de forma humilde e profissional."
     ]
@@ -305,7 +305,7 @@ function handleKeyDown(e) {
 }
 
 // -------------------------------------------------------------
-// 📍 LÓGICA DO SLIDE 2: LINEMAPA & DETALHES DE NÓS
+// 📍 LÓGICA DO SLIDE 2: LINEMAP & DETALHES DE NÓS
 // -------------------------------------------------------------
 function selectNode(nodeIndex) {
   // Remover classe ativa de todos os nós visuais
@@ -540,7 +540,7 @@ function handleImgError(img) {
 // -------------------------------------------------------------
 function togglePresenterMode() {
   const panel = document.getElementById("presenter-panel");
-  
+
   // Easter Egg: Pedir PIN se estiver a tentar abrir o painel
   if (!panel.classList.contains("active")) {
     const pin = prompt("System Auth:");

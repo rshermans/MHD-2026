@@ -957,6 +957,45 @@ body {
   color: hsl(var(--color-accent));
 }
 
+.academic-contacts {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 25px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  padding-top: 20px;
+  width: 100%;
+}
+
+.contact-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: hsl(var(--text-grey));
+  text-decoration: none;
+  font-size: 0.85rem;
+  transition: var(--transition-fast);
+  padding: 4px 0;
+}
+
+.contact-item i {
+  font-size: 1rem;
+  color: hsl(var(--color-primary));
+  width: 20px;
+  text-align: center;
+  transition: var(--transition-fast);
+}
+
+.contact-item:hover {
+  color: hsl(var(--text-white));
+  transform: translateX(4px);
+}
+
+.contact-item:hover i {
+  color: hsl(var(--color-secondary));
+  text-shadow: 0 0 8px rgba(180, 100, 50, 0.6);
+}
+
 .qrcode-card {
   background: rgba(13, 16, 23, 0.8);
   border: 1px solid rgba(255, 255, 255, 0.08);
@@ -1552,6 +1591,10 @@ body.light-mode .academic-card {
 
 body.light-mode .topic-tag {
   background: rgba(0, 0, 0, 0.03);
+}
+
+body.light-mode .academic-contacts {
+  border-top-color: rgba(0, 0, 0, 0.06);
 }
 
 body.light-mode .qrcode-card {
